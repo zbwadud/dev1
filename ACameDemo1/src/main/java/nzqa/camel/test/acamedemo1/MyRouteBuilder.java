@@ -29,6 +29,7 @@ public class MyRouteBuilder extends RouteBuilder {
     /**
      * A main() so we can easily run these routing rules in our IDE
      * @param args
+     * @throws java.lang.Exception
      */
     public static void main(String... args) throws Exception {
         Main.main(args);
@@ -37,6 +38,7 @@ public class MyRouteBuilder extends RouteBuilder {
     /**
      * Lets configure the Camel routing rules using Java code...
      */
+    @Override
     public void configure() {
 
         // TODO create Camel routes here.
@@ -45,11 +47,11 @@ public class MyRouteBuilder extends RouteBuilder {
         // (leaving them in place - see the 'noop' flag)
         // then performs content based routing on the message
         // using XPath
-        /*
+        /**/
         from("file:src/data?noop=true").
             choice().
                 when(xpath("/person/city = 'Dhaka'")).to("file:target/messages/uk").
                 otherwise().to("file:target/messages/others");
-                */
+                
     }
 }
